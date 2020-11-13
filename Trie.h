@@ -73,8 +73,8 @@ struct Trie{
            for (int i = 0; i < n / 2; i++)
                swap(word[i], word[n - i - 1]);
 
-           cout << word << endl;
-           cout << str << endl;
+          // cout << word << endl;
+          // cout << str << endl;
 
            add(word, const_cast<char*>(str.c_str()));
            word.clear();
@@ -215,7 +215,7 @@ struct Trie{
           }else{
               sen = sen->children[i];
           }
-      }
+      } cout << endl;
       if(sen != nullptr && sen->isword){
           fstream file;
           file.open("index.txt", ios::in | ios::out | ios::binary);
@@ -226,7 +226,7 @@ struct Trie{
               auto pos2 = it.second;
               file.seekg(pos1, ios::beg);
               file.read((char*)&dir, sizeof(dir));
-              //cout << dir << endl;
+              cout << dir << endl;
               cont++;
           }
 
