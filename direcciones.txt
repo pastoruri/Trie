@@ -1,0 +1,4 @@
+C:\Users\Rodrigo\Desktop\TEST\aa1.txt
+C:\Users\Rodrigo\Desktop\TEST\aa2.txt
+C:\Users\Rodrigo\Desktop\TEST\C1\aa2.txt
+C:\Users\Rodrigo\Desktop\TEST\C1\aa3.txt
