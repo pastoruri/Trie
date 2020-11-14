@@ -37,28 +37,31 @@ struct Trie{
         char word[256];
         string aux;
         int count = 0;
-        printAllWords(root, word, aux, count);
-        cout << count << endl;
+        int nodos = 0;
+        printAllWords(root, word, aux, count,nodos);
+        cout << "Hay "<<nodos << " nodos." <<endl;
+        cout << "Se ocupan "<<count<< " bytes" << endl;
     }
 
-    void printAllWords(Node* root, char* wordArray, string aux, int &count, int pos = 0)
+    void printAllWords(Node* root, char* wordArray, string aux, int &count, int &nodos, int pos = 0)
     {
 
         if(root == nullptr)
             return;
         if(root->isword)
         {
-            printWord(wordArray, pos, aux, count);
+            printWord(wordArray, pos, aux, count, nodos);
         }
         for(int i=0; i<256; i++)
         {
             if(root->children[i] != nullptr)
             {
                 wordArray[pos] = i;
-                printAllWords(root->children[i], wordArray, aux,count, pos+1);
+                printAllWords(root->children[i], wordArray, aux,count,nodos, pos+1);
             }
         }
         count +=  sizeof(root) + sizeof(*root);
+        nodos++;
     }
 
    void loadDirections(){
@@ -106,8 +109,8 @@ struct Trie{
       }
       if(sen != nullptr){
           char wordArray[256];
-          int x=0;
-          printAllWords(sen, wordArray, aux,x);
+          int x=0,y=0;
+          printAllWords(sen, wordArray, aux,x,y);
           /*
           fstream file;
           file.open("index.txt", ios::in | ios::out | ios::binary);
@@ -142,7 +145,7 @@ struct Trie{
 
     }
 
-    void printWord(char *str, int n, string aux, int i)
+    void printWord(char *str, int n, string aux, int i, int i1)
     {
         cout<<endl<<aux;
         for(int i=0; i<n; i++)
